@@ -1,0 +1,6 @@
+vcxproj/x64/
+vcxproj/.vs/
+*.user
+*.vpj
+*.vpw
+*.vpwhist
