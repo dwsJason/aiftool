@@ -30,7 +30,6 @@ typedef float				r32;
 typedef double				f64;
 typedef double				r64;
 
-
 #define null (0)
 
 // Odd Types
