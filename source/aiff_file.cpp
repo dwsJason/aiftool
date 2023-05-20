@@ -221,7 +221,7 @@ void AIFFFile::LoadFromFile(const char* pFilePath)
 
 						if ((1 == numChannels)&&(16 == sampleSize))
 						{
-							for (int idx = 0; idx < numSampleFrames; ++idx)
+							for (unsigned int idx = 0; idx < numSampleFrames; ++idx)
 							{
 								m_SampleData.push_back(Readu16(bytes,file_offset));
 							}
@@ -240,7 +240,7 @@ void AIFFFile::LoadFromFile(const char* pFilePath)
 						printf("MARK CHUNK, Length = %d\n", tempChunk.length);
 						printf("        numMarkers = %d\n", numMarkers);
 
-						for (int idx = 0; idx < numMarkers; ++idx)
+						for (unsigned int idx = 0; idx < numMarkers; ++idx)
 						{
 							AIFF_MARKER marker;
 
@@ -307,6 +307,54 @@ void AIFFFile::LoadFromFile(const char* pFilePath)
 }
 
 //------------------------------------------------------------------------------
+
+AIFF_MARKER* AIFFFile::FindMarker(u16 id)
+{
+	AIFF_MARKER* result = nullptr;
+
+	for (int idx = 0; idx < m_Markers.size(); ++idx)
+	{
+		if (m_Markers[idx].id == id)
+		{
+			result = &m_Markers[idx];
+			break;
+		}
+	}
+
+	return result;
+}
+
+//------------------------------------------------------------------------------
+
+u32 AIFFFile::GetLoop()
+{
+	u32 result = (u32)m_SampleData.size()-1;
+
+	AIFF_MARKER *pMarker = FindMarker(sustainLoop.beginLoop);
+
+	if (pMarker)
+	{
+		result = pMarker->position;
+	}
+
+	return result;
+}
+//------------------------------------------------------------------------------
+
+u32 AIFFFile::GetEnd()
+{
+	u32 result = (u32)m_SampleData.size()-1; // fallback
+
+	AIFF_MARKER *pMarker = FindMarker(sustainLoop.endLoop);
+
+	if (pMarker)
+	{
+		result = pMarker->position;
+	}
+
+	return result;
+
+}
 
 //------------------------------------------------------------------------------
 

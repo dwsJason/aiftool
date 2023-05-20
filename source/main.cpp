@@ -7,6 +7,7 @@
 #include <string>
 
 #include "aiff_file.h"
+#include "jmix_file.h"
 
 //------------------------------------------------------------------------------
 static void helpText()
@@ -158,9 +159,17 @@ int main(int argc, char* argv[])
 
 			AIFFFile aifdata( pInfilePath );
 
-
 			if (pOutfilePath)
 			{
+				JMIXFile jmix;
+
+				jmix.SetWaveData(aifdata.GetWaveData());
+				jmix.SetAttributes((u16)aifdata.GetFreq(),
+								   aifdata.GetNote(),
+								   aifdata.GetLoop(),
+								   aifdata.GetEnd());
+
+				jmix.SaveToFile(pOutfilePath);
 			}
 		}
 

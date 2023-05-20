@@ -21,12 +21,18 @@
     <ClCompile Include="..\source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\jmix_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\aiff_file.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\source\bctypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\jmix_file.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

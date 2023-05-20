@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\source\aiff_file.cpp" />
+    <ClCompile Include="..\source\jmix_file.cpp" />
     <ClCompile Include="..\source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\aiff_file.h" />
     <ClInclude Include="..\source\bctypes.h" />
+    <ClInclude Include="..\source\jmix_file.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

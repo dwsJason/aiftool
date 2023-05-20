@@ -66,7 +66,18 @@ public:
 	// Retrieval
 	void LoadFromFile(const char* pFilePath);
 
+	double GetFreq() { return sampleRate; }
+	u8 GetNote() { return baseNote; }
+
+	u32 GetLoop();
+	u32 GetEnd();
+
+	const std::vector<u16>& GetWaveData() {return m_SampleData; }
+
 private:
+
+	AIFF_MARKER* FindMarker(u16 id);
+
 	// COMM
 	u16 numChannels;
 	u32 numSampleFrames;
