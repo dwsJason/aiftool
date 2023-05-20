@@ -101,8 +101,8 @@ void JMIXFile::SaveToFile(const char* pFilenamePath)
 	for (int idx = 0; idx < length; ++idx)
 	{
 		u16 sample = pWave[idx];
-		sample<<=1;
-		sample &= 0x1FF;
+		sample>>=7;
+		sample &= 0x1FE;
 		pWave[idx] = sample;
 	}
 
